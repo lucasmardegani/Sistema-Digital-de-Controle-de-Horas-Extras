@@ -32,10 +32,42 @@ int main() {
                 printf("Funcionarios cadastrado com sucesso!\n");
                 break;
 
-            case 2: //FAZ DA CASE 2 PRA BAIXO
-                    //PRA RODAR O SISTEMA TODO ENTRA NO TERMINAL E DIGITA: gcc main.c -o sistema DEPOIS: .\sistema
+            case 2:
+            if (total == 0){
+                printf("Nenhum funcionário cadastrado ainda.\n");
+                break;
+            }
+            printf("Digie o numero do funcionario (0 a %d):", total - 1);
+            int id;
+            scanf("%d", &id);
+            if (id >= 0 && id < total) {
+                printf("Digite a quantidade de horas extras: ");
+                int horas;
+                scanf("%d", &horas);
+                funcionarios[id].horasExtras += horas;
+                printf("Horas registradas com sucesso!\n");
+            } else {
+                printf("Funcionário inválido!\n");
+            }
+            break;
+            
+            
+            case 3:
+            printf("\n--- RELATÓRIO DE HORAS EXTRAS ---\n");
+            for (int i = 0; i <total; i++){
+                printf("%d - %s: %d horas\n", i, funcionarios[i].nome, funcionarios[i].horasExtras);
+            }
+            break;
 
+            case 0:
+            printf("Encerrando o programa...\n");
+            break;
 
-        }
+            default:
+            printf("Opcao invalida.\n");
+            }
+
+        } while (opcao !=0);
+
+        return 0;
     }
-}
